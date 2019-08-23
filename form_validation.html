@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Validations</title>
+
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+      <div class="container"><br>
+            <h2 class="text-center text-info ">Form Validations</h2>
+            <div class="row">
+                  <div class="col-md-8 m-auto d-block">
+
+                        <form action="#" onsubmit="return validation()" class="bg-light">
+
+                              <div class="form-group">
+                                    <label for="firstName">First Name :</label>
+                                    <input id="firstName" type="text" name="firstName" class="form-control">
+                                    <span id="ErrFirstName" class="text-danger font-weight-bold"></span>
+                              </div>
+                              <div class="form-group">
+                                    <label for="lastName">Last Name :</label>
+                                    <input id="lastName" type="text" name="lastName" class="form-control">
+                                    <span id="ErrLastName" class="text-danger font-weight-bold"></span>
+                              </div>
+                              <div class="form-group">
+                                    <label for="email">Email :</label>
+                                    <input id="email" type="text" name="email" class="form-control">
+                                    <span id="ErrEmail" class="text-danger font-weight-bold"></span>
+                              </div>
+                              <div class="form-group">
+                                    <label for="mobile">Mobile Number :</label>
+                                    <input id="mobile" type="mobile" name="mobile" class="form-control">
+                                    <span id="ErrMobile" class="text-danger font-weight-bold"></span>
+                              </div>
+                              <div class="form-group">
+                                    <label for="passWord">PassWord :</label>
+                                    <input id="passWord" type="password" name="passWord" class="form-control">
+                                    <span id="ErrPassWord" class="text-danger font-weight-bold"></span>
+                              </div>
+                              <div class="form-group">
+                                    <label for="confirmPassword">Confirm Password :</label>
+                                    <input id="confirmPassword" type="password" name="confirmPassword"
+                                          class="form-control">
+                                    <span id="ErrConfirmPassword" class="text-danger font-weight-bold"></span>
+                              </div>
+                              <input type="submit" name="button" class="btn btn-success">
+                        </form>
+                  </div>
+            </div>
+      </div>
+
+      <script>
+            function validation() {
+
+                  var firstName = document.getElementById('firstName').value;
+                  if (firstName == "") {
+                        document.getElementById('ErrFirstName').innerHTML = "** Please enter the first name field";
+                        return false;
+                  }if((firstName.length <= 3) || (firstName.length > 15)){
+                        document.getElementById('ErrFirstName').innerHTML = "** Please enter the first name length between 3 and 15";
+                        return false;
+                  }if(!isNaN(firstName)){
+                        document.getElementById('ErrFirstName').innerHTML = "** Please enter charactors";
+                        return false;
+                  }
+
+                  // ==============================================
+
+                  var lastName = document.getElementById('lastName').value;
+                  if (lastName == "") {
+                        document.getElementById('ErrLastName').innerHTML = "** Please enter the last name field";
+                        return false;
+                  }if((lastName.length <= 3) || (lastName.length > 15)){
+                        document.getElementById('ErrLastName').innerHTML = "** Please enter the last name length between 3 and 15";
+                        return false;
+                  }if(!isNaN(lastName)){
+                        document.getElementById('ErrLastName').innerHTML = "** Please enter charactors";
+                        return false;
+                  }
+
+                  // ===============================================
+
+                  var email = document.getElementById('email').value;
+                  if (email == "") {
+                        document.getElementById('ErrEmail').innerHTML = "** Please enter the email field";
+                        return false;
+                  }if(email.indexOf('@') <= 0){
+                        document.getElementById('ErrEmail').innerHTML = "** Invalid position of @";
+                        return false;
+                  }if((email.charAt(email.length-4) != '.') &&  (email.charAt(email.length-3) != '.')){
+                        document.getElementById('ErrEmail').innerHTML = "** Invalid position of .";
+                        return false;
+                  }
+
+
+                  // ===============================================
+
+                  var mobile = document.getElementById('mobile').value;
+                  if(mobile == ""){
+                        document.getElementById('ErrMobile').innerHTML = "** Please enter the mobile field";
+                        return false;
+                  }if(isNaN(mobile)){
+                        document.getElementById('ErrMobile').innerHTML = "** Please enter number only";
+                        return false;
+                  }if(mobile.length != 10){
+                        document.getElementById('ErrMobile').innerHTML = "** Please enter 10 digit mobile number only";
+                        return false;
+                  }
+
+                  // ===============================================
+
+                  var passWord = document.getElementById('passWord').value;
+                  if (passWord == "") {
+                        document.getElementById('ErrPassWord').innerHTML = "** Please enter the password field";
+                        return false;
+                  }if((passWord.length <= 6) || (passWord.length > 15)){
+                        document.getElementById('ErrPassWord').innerHTML = "** Please enter the password length between 6 and 15";
+                        return false;
+                  }
+
+                  // ===============================================
+
+                  var confirmPassword = document.getElementById('confirmPassword').value;
+                  if (confirmPassword == "") {
+                        document.getElementById('ErrConfirmPassword').innerHTML = "** Please enter the confirm password field";
+                        return false;
+                  }if(passWord != confirmPassword){
+                        document.getElementById('ErrConfirmPassword').innerHTML = "** password are not matching";
+                        return false;
+                  }
+            }
+      </script>
+</body>
+
+</html>
